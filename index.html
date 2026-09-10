@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="EcoCampus — a college e-waste reward prototype. Dispose responsibly and earn Activity Points."
+    />
+    <title>EcoCampus | Responsible E-Waste Rewards</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="site-header" hidden>
+      <div class="nav-inner">
+        <a class="brand" href="#home" data-nav="home" aria-label="EcoCampus home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+              <circle cx="16" cy="16" r="14" fill="#166534" />
+              <path
+                d="M10 18c2-6 6-9 12-10-1 6-4 10-10 12-1-1-1.5-1.5-2-2z"
+                fill="#86efac"
+              />
+              <path
+                d="M9 21c4-1 8 0 11 3-5 1-9 0-11-3z"
+                fill="#22c55e"
+              />
+            </svg>
+          </span>
+          <span class="brand-text">EcoCampus</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          <span class="sr-only">Menu</span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav class="primary-nav" id="primary-nav" aria-label="Main">
+          <a href="#home" data-nav="home">Home</a>
+          <a href="#submit" data-nav="submit">Submit E-Waste</a>
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="#about" data-nav="about">How It Works</a>
+          <button class="btn btn-ghost" id="logout-btn" type="button">Logout</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page login-page" id="login" aria-labelledby="login-title">
+        <div class="login-wrap">
+          <div class="login-card card">
+            <div class="login-badge" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
+                <circle cx="24" cy="24" r="22" fill="#166534" />
+                <path
+                  d="M16 26c3-9 9-13 18-15-2 9-6 15-15 18-1.5-1-2.2-2-3-3z"
+                  fill="#86efac"
+                />
+                <path d="M14 32c6-1 12 0 16 4-7 2-13 1-16-4z" fill="#22c55e" />
+              </svg>
+            </div>
+            <p class="eyebrow">College E-Waste Rewards</p>
+            <h1 id="login-title">Welcome to EcoCampus</h1>
+            <p class="lede">
+              Sign in with your College UID to submit e-waste, track Activity Points, and
+              see your campus impact.
+            </p>
+
+            <form id="login-form" novalidate>
+              <div class="field">
+                <label for="college-uid">College UID</label>
+                <input
+                  id="college-uid"
+                  name="collegeUid"
+                  type="text"
+                  required
+                  minlength="8"
+                  autocomplete="username"
+                  placeholder="U25031xx"
+                />
+                <p class="field-hint">Use a valid UID, for example U2503101.</p>
+                <p class="field-error" id="login-error" role="alert" hidden></p>
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Enter EcoCampus</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="page app-page" id="home" hidden aria-labelledby="home-title">
+        <div class="hero">
+          <p class="eyebrow">Campus sustainability, rewarded</p>
+          <p class="lede home-greeting" id="home-greeting"></p>
+          <h1 id="home-title">Dispose Responsibly. Earn Activity Points.</h1>
+          <p class="lede">
+            Students receive <i><b>Activity Points</b></i> for responsibly handing over e-waste at
+            campus collection points. Keep phones, laptops, batteries, and accessories
+            out of landfills and watch as your activity points grow.
+          </p>
+          <button class="btn btn-primary" type="button" data-nav="submit">
+            Submit E-Waste
+          </button>
+        </div>
+
+        <div class="stats-grid" aria-label="Your summary">
+          <article class="card stat-card">
+            <p class="stat-label">Total Activity Points</p>
+            <p class="stat-value" data-stat="points">0</p>
+          </article>
+          <article class="card stat-card">
+            <p class="stat-label">Items Submitted</p>
+            <p class="stat-value" data-stat="items">0</p>
+          </article>
+          <article class="card stat-card">
+            <p class="stat-label">Total Submissions</p>
+            <p class="stat-value" data-stat="submissions">0</p>
+          </article>
+        </div>
+
+        <div class="steps">
+          <h2>How it works in three steps</h2>
+          <ol class="steps-grid">
+            <li class="card step-card">
+              <span class="step-num" aria-hidden="true">1</span>
+              <h3>Select E-Waste</h3>
+              <p>Choose the item type and quantity you are ready to hand over.</p>
+            </li>
+            <li class="card step-card">
+              <span class="step-num" aria-hidden="true">2</span>
+              <h3>Hand It Over at the Collection Point</h3>
+              <p>Drop the device at the campus collection desk so it can be recycled safely.</p>
+            </li>
+            <li class="card step-card">
+              <span class="step-num" aria-hidden="true">3</span>
+              <h3>Earn Activity Points</h3>
+              <p>Points are added to your EcoCampus record for responsible disposal.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="page app-page" id="submit" hidden aria-labelledby="submit-title">
+        <div class="section-intro">
+          <p class="eyebrow">Record a drop-off</p>
+          <h1 id="submit-title">Submit E-Waste</h1>
+          <p class="lede">
+            Log the item you are handing over. Points are calculated instantly from the
+            campus reward table.
+          </p>
+        </div>
+
+        <div class="form-layout" id="form-layout">
+          <form class="card form-card" id="submit-form" novalidate>
+            <div class="field">
+              <label for="ewaste-item">E-waste item</label>
+              <select id="ewaste-item" name="item" required>
+                <option value="">Select an item</option>
+                <option value="Mobile Phone">Mobile Phone</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Charger / Cable">Charger / Cable</option>
+                <option value="Keyboard / Mouse">Keyboard / Mouse</option>
+                <option value="Headphones / Earphones">Headphones / Earphones</option>
+                <option value="Battery">Battery</option>
+                <option value="Other Electronic Item">Other Electronic Item</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="ewaste-qty">Quantity</label>
+              <input
+                id="ewaste-qty"
+                name="quantity"
+                type="number"
+                min="1"
+                max="10"
+                value="1"
+                required
+              />
+              <p class="field-hint">Enter a number between 1 and 10.</p>
+            </div>
+
+            <div class="field">
+              <label for="ewaste-notes">Notes <span class="optional">(optional)</span></label>
+              <textarea
+                id="ewaste-notes"
+                name="notes"
+                rows="4"
+                maxlength="300"
+                placeholder="Condition, brand, or collection location"
+              ></textarea>
+            </div>
+
+            <p class="points-preview" id="points-preview" aria-live="polite">
+              You will earn: 0 Activity Points
+            </p>
+
+            <p class="field-error" id="submit-error" role="alert" hidden></p>
+
+            <button class="btn btn-primary btn-block" type="submit">Record submission</button>
+          </form>
+
+          <aside class="card note-card">
+            <h2>Verification note</h2>
+            <p>
+              In this classroom prototype every submission is marked
+              <strong>Verified</strong> immediately. In the real system an administrator would
+              inspect the e-waste at the collection point before finalizing Activity Points.
+            </p>
+            <ul class="points-legend" aria-label="Point values">
+              <li><span>Mobile Phone</span><strong>50</strong></li>
+              <li><span>Laptop</span><strong>100</strong></li>
+              <li><span>Tablet</span><strong>70</strong></li>
+              <li><span>Charger / Cable</span><strong>10</strong></li>
+              <li><span>Keyboard / Mouse</span><strong>20</strong></li>
+              <li><span>Headphones / Earphones</span><strong>15</strong></li>
+              <li><span>Battery</span><strong>30</strong></li>
+              <li><span>Other Electronic Item</span><strong>10</strong></li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="card success-card" id="submit-success" hidden role="status">
+          <h2>Success</h2>
+          <p id="success-message"></p>
+          <div class="btn-row">
+            <button class="btn btn-primary" type="button" data-nav="dashboard">
+              View dashboard
+            </button>
+            <button class="btn btn-secondary" id="submit-another" type="button">
+              Submit another item
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page app-page" id="dashboard" hidden aria-labelledby="dashboard-title">
+        <div class="section-intro">
+          <p class="eyebrow">Your record</p>
+          <h1 id="dashboard-title">Dashboard</h1>
+          <p class="uid-line">
+            Signed in as <strong id="dashboard-uid">—</strong>
+          </p>
+        </div>
+
+        <p class="motivation card" id="motivation"></p>
+
+        <div class="stats-grid" aria-label="Dashboard totals">
+          <article class="card stat-card">
+            <p class="stat-label">Total Activity Points</p>
+            <p class="stat-value" data-stat="points">0</p>
+          </article>
+          <article class="card stat-card">
+            <p class="stat-label">Total Items Submitted</p>
+            <p class="stat-value" data-stat="items">0</p>
+          </article>
+          <article class="card stat-card">
+            <p class="stat-label">Total Submissions</p>
+            <p class="stat-value" data-stat="submissions">0</p>
+          </article>
+        </div>
+
+        <div class="history-wrap">
+          <h2>Submission history</h2>
+          <div class="empty-state card" id="empty-state" hidden>
+            <p>No submissions yet. Record your first e-waste drop-off to start earning points.</p>
+            <button class="btn btn-primary" type="button" data-nav="submit">
+              Submit E-Waste
+            </button>
+          </div>
+
+          <div class="table-scroll" id="history-table-wrap">
+            <table class="history-table" id="history-table">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Points Earned</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="history-cards" id="history-cards" aria-label="Submission cards"></div>
+        </div>
+      </section>
+
+      <section class="page app-page" id="about" hidden aria-labelledby="about-title">
+        <div class="section-intro">
+          <p class="eyebrow">About EcoCampus</p>
+          <h1 id="about-title">How It Works</h1>
+          <p class="lede">
+            EcoCampus is a classroom demonstration of a college e-waste reward system.
+            Students log in with a College UID, record items they hand over, and earn
+            Activity Points for responsible disposal.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <h2>Why proper e-waste disposal matters</h2>
+            <p>
+              Phones, laptops, batteries, and cables contain metals and chemicals that do
+              not belong in ordinary trash. Informal dumping can leak toxins into soil and
+              water, while recycling recovers valuable materials and keeps hazardous parts
+              out of campus bins.
+            </p>
+            <p>
+              A simple reward loop: hand over, verify, earn points. It helps students build
+              the habit of using official collection points instead of discarding electronics
+              with mixed waste.
+            </p>
+          </article>
+
+          <article class="card">
+            <h2>System workflow</h2>
+            <ol class="workflow">
+              <li>Sign in with your College UID.</li>
+              <li>Select the e-waste type and quantity.</li>
+              <li>Hand the item over at the campus collection point.</li>
+              <li>The prototype records a Verified submission and Activity Points.</li>
+              <li>Review totals and history on your dashboard.</li>
+            </ol>
+            <p>
+              A live campus version would add staff verification before points become final.
+            </p>
+          </article>
+        </div>
+
+        <h2 class="future-heading">Future scope</h2>
+        <div class="future-grid">
+          <article class="card future-card">
+            <h3>Admin verification</h3>
+            <p>Staff confirm each drop-off before points are locked on a student record.</p>
+          </article>
+          <article class="card future-card">
+            <h3>QR-code collection centers</h3>
+            <p>Scan a center code so submissions are tied to a real collection location.</p>
+          </article>
+          <article class="card future-card">
+            <h3>Campus reward redemption</h3>
+            <p>Exchange Activity Points for certificates, merch, or event access.</p>
+          </article>
+          <article class="card future-card">
+            <h3>Recycling impact reports</h3>
+            <p>Show weight diverted, materials recovered, and carbon avoided each term.</p>
+          </article>
+          <article class="card future-card">
+            <h3>Department leaderboards</h3>
+            <p>Friendly competition between departments to increase responsible drop-offs.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="site-footer" hidden>
+      <p>© EcoPoint 2026-27 | Responsible e-waste, rewarding action</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
