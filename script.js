@@ -47,6 +47,7 @@
     submitForm: document.getElementById("submit-form"),
     formLayout: document.getElementById("form-layout"),
     item: document.getElementById("ewaste-item"),
+    location: document.getElementById("pickup-location"),
     qty: document.getElementById("ewaste-qty"),
     notes: document.getElementById("ewaste-notes"),
     preview: document.getElementById("points-preview"),
@@ -240,6 +241,8 @@
           "</td><td>" +
           rec.quantity +
           "</td><td>" +
+          escapeHtml(rec.location || "—") +
+          "</td><td>" +
           rec.points +
           "</td><td>" +
           escapeHtml(formatDate(rec.date)) +
@@ -256,6 +259,9 @@
           "</h3><dl>" +
           "<dt>Quantity</dt><dd>" +
           rec.quantity +
+          "</dd>" +
+          "<dt>Pickup Point</dt><dd>" +
+          escapeHtml(rec.location || "—") +
           "</dd>" +
           "<dt>Points Earned</dt><dd>" +
           rec.points +
@@ -296,6 +302,7 @@
   function resetSubmitForm() {
     els.submitForm.reset();
     els.qty.value = "1";
+    els.location.value = "";
     els.success.hidden = true;
     els.submitForm.hidden = false;
     els.formLayout.hidden = false;
@@ -331,12 +338,18 @@
     event.preventDefault();
     const uid = getCurrentUser();
     const item = els.item.value;
+    const location = els.location.value;
     const qty = parseQuantity(els.qty.value);
     const notes = els.notes.value.trim();
 
     if (!item) {
       setError(els.submitError, "Please select an e-waste item.");
       els.item.focus();
+      return;
+    }
+    if (!location) {
+      setError(els.submitError, "Please select a pickup location.");
+      els.location.focus();
       return;
     }
     if (qty === null) {
@@ -350,6 +363,7 @@
       id: createId(),
       uid: uid,
       item: item,
+      location: location,
       quantity: qty,
       points: earned,
       notes: notes,
