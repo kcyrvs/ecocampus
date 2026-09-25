@@ -57,6 +57,14 @@ ecocampus/
 │
 ├── Sustainable Engineering - Presentation.pptx
 │
-├── Report - Keith Hamil Cyrus (U2503171).pdf
+├── Reports/
+│   ├── Judin Shine (U2503166).pdf
+│   ├── Julia Hanna Jojy (U2503167).pdf
+│   ├── Juvinet Puthussery (U2503168).pdf
+│   ├── Karthik Sarath (U2503169).pdf
+│   └── Keith Hamil Cyrus (U2503171).pdf
 │
 └── README.md
+```
+
+The `Reports` folder contains the individual project reports submitted by the group members.
